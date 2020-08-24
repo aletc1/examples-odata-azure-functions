@@ -6,6 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.2.1" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.29" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

@@ -6,11 +6,13 @@ using Microsoft.AspNet.OData.Query.Validators;
 using Microsoft.AspNetCore.Builder.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.UriParser;
 using System;
 using System.Linq;
+
 
 namespace AzureFunctionOData
 {
@@ -27,7 +29,11 @@ namespace AzureFunctionOData
             if (_provider == null)
             {
                 var collection = new ServiceCollection();
-                collection.AddMvcCore();
+                collection.AddMvcCore(options =>
+                {
+                    options.EnableEndpointRouting = false;
+                }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
                 collection.AddOData();
                 collection.AddTransient<ODataUriResolver>();
                 collection.AddTransient<ODataQueryValidator>();
